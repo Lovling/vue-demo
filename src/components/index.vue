@@ -7,12 +7,21 @@
         </li>
       </ul>
     </div>
-    <div class="con"></div>
+    <div class="con">
+      <div class="item" v-for="(item,index) in title" :key="index">
+        <span>￥{{item.id}}</span>
+        <inline-x-number style="display:block;" :min="0" width="50px" button-style="round"></inline-x-number>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
+import { InlineXNumber } from 'vux'
 export default {
+  components: {
+    InlineXNumber
+  },
   data () {
     return {
       title: [
@@ -23,7 +32,9 @@ export default {
         { id: 5, text: '爽口凉菜' },
         { id: 6, text: '半成品' },
         { id: 7, text: '饭类' },
-        { id: 8, text: '面类' }
+        { id: 8, text: '面类' },
+        { id: 9, text: '其他类' },
+        { id: 10, text: '饮料类' }
       ]
     }
   },
@@ -49,19 +60,15 @@ export default {
     flex: 0 0 1.6rem;
     width: 1.6rem;
     background-color: #f3f5f7;
-    overflow: hidden;
+    overflow: scroll;
     ul{
-      height: 100%;
       display: flex;
       flex-direction: column;
-      // align-items: center;
-      // justify-content: center;
       padding: 0 .24rem;
       font-size: 12px;
       color: rgb(24,20,20);
       font-weight: 200;
       .item{
-        flex:1;
         height: 1.08rem;
         // line-height: 1.08rem;
         text-align: center;
@@ -74,6 +81,14 @@ export default {
   }
   .con {
     flex: 1;
+    overflow: scroll;
+    .item{
+      width: 100%;
+      height: 100px;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-around;
+    }
   }
 }
 </style>

@@ -104,3 +104,10 @@ module.exports = {
     new TransformModulesPlugin()
   ]
 }
+// 解决vux2.0安装报错
+const vuxLoader = require('vux-loader')
+const webpackConfig = module.exports // 原来的 module.exports 代码赋值给变量 webpackConfig
+
+module.exports = vuxLoader.merge(webpackConfig, {
+  plugins: ['vux-ui']
+})
