@@ -78,7 +78,7 @@ export default {
         { id: 5,
           text: '爽口凉菜',
           content: [
-            { price: '44',word: '无法防守' },
+            { price: '44', word: '无法防守' },
             { price: '90', word: '不成熟' },
             { price: '21', word: '不够' }
           ]
@@ -116,7 +116,7 @@ export default {
         { id: 10,
           text: '饮料类',
           content: [
-            { price: '77',word: '无法防守' },
+            { price: '77', word: '无法防守' },
             { price: '21', word: '十点多' },
             { price: '70', word: '发多少' },
             { price: '24', word: '我去' },
