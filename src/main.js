@@ -6,11 +6,13 @@ import router from './router'
 import flexible from 'flexible.js'
 import fastClick from 'fastclick'
 import Cube from 'cube-ui'
+// import VConsole from 'vconsole/dist/vconsole.min.js'
 
 Vue.config.productionTip = false
 flexible(750, 640)
 fastClick.attach(document.body)
 Vue.use(Cube)
+// let vConsole = new VConsole()
 
 /* eslint-disable no-new */
 new Vue({

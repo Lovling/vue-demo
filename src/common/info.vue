@@ -1,9 +1,6 @@
 <template>
   <section class="marquee">
-    <img
-      src="../assets/imgs/bulletin/bulletin@2x.png"
-      alt=""
-    >
+    <img src="../assets/imgs/bulletin/bulletin@2x.png" alt="">
     <span>结婚后建安费沙发上发顺丰撒放假撒发，阿萨凉快的三连看到奥地利扩散到离开撒旦</span>
     <span>></span>
   </section>
@@ -18,6 +15,7 @@ export default {}
   background-color: rgba(7, 17, 27, 0.2);
   padding: 0 0.24rem;
   font-size: 10px;
+  color: rgb(77, 75, 75);
   display: flex;
   align-items: center;
   img {
