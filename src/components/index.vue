@@ -2,26 +2,17 @@
   <section class="index">
     <div class="menu">
       <ul>
-        <li v-for="(item,index) in list"
-            :key="index"
-            class="item">
+        <li v-for="(item,index) in list" :key="index" class="item">
           {{item.text}}
         </li>
       </ul>
     </div>
     <div class="con">
-      <div class="item"
-           v-for="(item,index) in list"
-           :key="index">
+      <div class="item" v-for="(item,index) in list" :key="index">
         <h2 class="tit">{{item.text}}</h2>
-        <div class="wrap"
-             v-for="(row, i) in item.content"
-             :key="i">
+        <div class="wrap" v-for="(row, i) in item.content" :key="i">
           <span>￥{{row.price}}</span>
-          <inline-x-number style="display:block;"
-                           :min="0"
-                           width="50px"
-                           button-style="round"></inline-x-number>
+          <inline-x-number style="display:block;" :min="0" width="50px" button-style="round"></inline-x-number>
         </div>
       </div>
     </div>
