@@ -13,6 +13,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "better-scroll": "^1.15.2",
     "cube-ui": "^1.12.27",
     "fastclick": "^1.0.6",
     "flexible.js": "^2.0.19",

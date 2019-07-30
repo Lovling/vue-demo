@@ -1,25 +1,29 @@
 <template>
   <section class="index">
-    <div class="menu">
+    <div class="menu" ref="menu">
       <ul>
-        <li v-for="(item,index) in list" :key="index" class="item">
+        <li v-for="(item,index)  in list" :key="index" class="item" @click="select(index, $event)"
+          :class="{current: currentIndex == index}">
           {{item.text}}
         </li>
       </ul>
     </div>
-    <div class="con">
-      <div class="item" v-for="(item,index) in list" :key="index">
-        <h2 class="tit">{{item.text}}</h2>
-        <div class="wrap" v-for="(row, i) in item.content" :key="i">
-          <span>￥{{row.price}}</span>
-          <inline-x-number style="display:block;" :min="0" width="50px" button-style="round"></inline-x-number>
-        </div>
-      </div>
+    <div class="con" ref="con">
+      <ul>
+        <li class="item item-hook" v-for="(item,index) in list" :key="index">
+          <h2 class="tit">{{item.text}}</h2>
+          <div class="wrap" v-for="(row, i) in item.content" :key="i">
+            <span>￥{{row.price}}</span>
+            <inline-x-number style="display:block;" :min="0" width="50px" button-style="round"></inline-x-number>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 import { InlineXNumber } from 'vux'
 export default {
   components: {
@@ -43,6 +47,8 @@ export default {
           text: '单人特色套餐',
           content: [
             { price: '1', word: '无法防守' },
+            { price: '5', word: '小程序' },
+            { price: '5', word: '小程序' },
             { price: '5', word: '小程序' }
           ]
         },
@@ -114,15 +120,64 @@ export default {
             { price: '66', word: '确认' }
           ]
         }
-      ]
+      ],
+      itemHeight: [],
+      scrollY: 0,
+      clickEvent: false
+    }
+  },
+  created () {
+    this.$nextTick(() => {
+      this._initScroll()
+      this._getHeight()
+    })
+  },
+  computed: {
+    currentIndex () {
+      for (let i = 0; i < this.itemHeight.length; i++) {
+        let height = this.itemHeight[i]
+        let height2 = this.itemHeight[i + 1]
+        if (!height2 || (this.scrollY >= height && this.scrollY < height2)) {
+          if (this.clickEvent) {
+            return i + 1
+          } else {
+            return i
+          }
+        }
+      }
+      return 0
     }
   },
   methods: {
-    selectItem (item) {
-      console.log(item.name)
+    _initScroll () {
+      this.menu = new BScroll(this.$refs.menu, {
+        click: true
+      })
+      this.con = new BScroll(this.$refs.con, {
+        probeType: 3
+      })
+      this.con.on('scroll', (pos) => {
+        this.scrollY = Math.abs(Math.round(pos.y))
+      })
     },
-    clickTitle (title) {
-      console.log(title)
+    _getHeight () {
+      let items = this.$refs.con.getElementsByClassName('item-hook')
+      let height = 0
+      this.itemHeight.push(height)
+      for (let i = 0; i < items.length; i++) {
+        height += items[i].clientHeight
+        this.itemHeight.push(height)
+      }
+    },
+    select (index, $event) {
+      this.clickEvent = true
+      if (!$event._constructed) {
+        return null
+      } else {
+        let conItems = this.$refs.con.getElementsByClassName('item-hook')
+        let el = conItems[index]
+        this.con.scrollToElement(el, 300)
+      }
     }
   }
 }
@@ -139,7 +194,7 @@ export default {
     flex: 0 0 1.6rem;
     width: 1.6rem;
     background-color: #f3f5f7;
-    overflow: scroll;
+    overflow: hidden;
     ul {
       display: flex;
       flex-direction: column;
@@ -156,11 +211,14 @@ export default {
         align-items: center;
         justify-content: center;
       }
+      .current {
+        background-color: #fff;
+      }
     }
   }
   .con {
     flex: 1;
-    overflow: scroll;
+    overflow: hidden;
     .item {
       background-color: #fff;
       .wrap {
