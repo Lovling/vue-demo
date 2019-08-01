@@ -236,6 +236,22 @@ export default {
   }
   .foot{
     width: 100%;
+    height: .92rem;
+    background-color: #ccc;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+  }
+  .left{
+    flex: 0 0 5.4rem;
+    width: 5.4rem;
+    height: 100%;
+    background-color: #fff;
+  }
+  .right{
+    flex: 1;
+    height: 100%;
+    width: 2.1rem;
   }
 }
 </style>
