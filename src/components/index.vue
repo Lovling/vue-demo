@@ -19,6 +19,10 @@
         </li>
       </ul>
     </div>
+    <div class="foot">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
   </section>
 </template>
 
@@ -229,6 +233,9 @@ export default {
         align-items: center;
       }
     }
+  }
+  .foot{
+    width: 100%;
   }
 }
 </style>
