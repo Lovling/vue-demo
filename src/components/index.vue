@@ -20,8 +20,12 @@
       </ul>
     </div>
     <div class="foot">
-      <div class="left"></div>
-      <div class="right"></div>
+      <div class="left">
+        <div class="cart">购物车</div>
+        <div class="price">￥{{price}}元</div>
+        <div class="temp">另需配送费￥{{delivery}}元</div>
+      </div>
+      <div class="right">{{startPrice}}</div>
     </div>
   </section>
 </template>
@@ -30,6 +34,12 @@
 import BScroll from 'better-scroll'
 import { InlineXNumber } from 'vux'
 export default {
+  props: {
+    price: {
+      type: Number,
+      default: 0
+    }
+  },
   components: {
     InlineXNumber
   },
@@ -127,7 +137,9 @@ export default {
       ],
       itemHeight: [],
       scrollY: 0,
-      clickEvent: false
+      clickEvent: false,
+      delivery: 4,
+      startPrice: '￥20起送'
     }
   },
   created () {
@@ -246,12 +258,28 @@ export default {
     flex: 0 0 5.4rem;
     width: 5.4rem;
     height: 100%;
-    background-color: #fff;
+    background-color: rgba(167, 160, 160, 0.63);
+    font-size: 12px;
+    .cart {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+    .price{
+      display: inline-block;
+    }
+    .temp{
+      display: inline-block;
+    }
   }
   .right{
     flex: 1;
     height: 100%;
     width: 2.1rem;
+    line-height: 100%;
   }
 }
 </style>
