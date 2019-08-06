@@ -21,12 +21,12 @@
     </div>
     <div class="foot">
       <div class="left">
-        <div class="cart">购物车</div>
+        <div class="cart" :class="{'current': price > 0}">购物车</div>
         <div class="mark" v-if="price">0</div>
-        <div class="price">￥{{price}}元</div>
+        <div class="price" :class="{'highlight': price > 0}">￥{{price}}元</div>
         <div class="temp">另需配送费￥{{delivery}}元</div>
       </div>
-      <div class="right">{{startPrice}}</div>
+      <div class="right" :class="{'tempHigh': price >= 20}">{{startPrice}}</div>
     </div>
   </section>
 </template>
@@ -140,7 +140,7 @@ export default {
       scrollY: 0,
       clickEvent: false,
       delivery: 4,
-      startPrice: '￥20起送'
+      startPrices: '￥20起送'
     }
   },
   created () {
@@ -163,6 +163,15 @@ export default {
         }
       }
       return 0
+    },
+    startPrice () {
+      if (this.price <= 0) {
+        return '￥20元起送'
+      } else if (this.price < 20) {
+        return `还差${20 - this.price}元起送`
+      } else {
+        return '去结账'
+      }
     }
   },
   methods: {
@@ -270,7 +279,11 @@ export default {
       background-color: #fff;
       position: relative;
     }
-    .mark{
+    .current {
+      background-color: rgb(0, 160, 220);
+      color: #fff;
+    }
+    .mark {
       width: 20px;
       height: 10px;
       background-color: red;
@@ -286,6 +299,9 @@ export default {
     .price {
       display: inline-block;
     }
+    .highlight{
+      color: #fff;
+    }
     .temp {
       display: inline-block;
     }
@@ -296,5 +312,8 @@ export default {
     width: 2.1rem;
     line-height: 100%;
   }
+  .tempHigh{
+      background-color: #fff;
+    }
 }
 </style>
