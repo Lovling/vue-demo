@@ -22,6 +22,7 @@
     <div class="foot">
       <div class="left">
         <div class="cart">购物车</div>
+        <div class="mark" v-if="price">0</div>
         <div class="price">￥{{price}}元</div>
         <div class="temp">另需配送费￥{{delivery}}元</div>
       </div>
@@ -267,6 +268,20 @@ export default {
       line-height: 40px;
       border-radius: 50%;
       background-color: #fff;
+      position: relative;
+    }
+    .mark{
+      width: 20px;
+      height: 10px;
+      background-color: red;
+      color: #fff;
+      position: absolute;
+      top: -5px;
+      border-radius: 30%;
+      left: 16px;
+      text-align: center;
+      line-height: 10px;
+      font-size: 12px;
     }
     .price {
       display: inline-block;
