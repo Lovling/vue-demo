@@ -32,7 +32,7 @@ export default {
     height: 0.8rem;
     line-height: 0.8rem;
     font-size: 14px;
-    color: rgb(77,85,93);
+    color: rgb(77, 85, 93);
     text-align: center;
     display: flex;
     justify-content: space-around;

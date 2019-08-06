@@ -246,7 +246,7 @@ export default {
       }
     }
   }
-  .foot{
+  .foot {
     width: 100%;
     height: 1.16rem;
     background-color: #ccc;
@@ -254,7 +254,7 @@ export default {
     bottom: 0;
     display: flex;
   }
-  .left{
+  .left {
     flex: 0 0 5.4rem;
     width: 5.4rem;
     height: 100%;
@@ -268,14 +268,14 @@ export default {
       border-radius: 50%;
       background-color: #fff;
     }
-    .price{
+    .price {
       display: inline-block;
     }
-    .temp{
+    .temp {
       display: inline-block;
     }
   }
-  .right{
+  .right {
     flex: 1;
     height: 100%;
     width: 2.1rem;

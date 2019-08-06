@@ -2,14 +2,11 @@
   <section class="header">
     <div class="avatar"></div>
     <div class="info">
-      <img class="brand"
-           src="../assets/imgs/brand/brand@2x.png"
-           alt="" />
+      <img class="brand" src="../assets/imgs/brand/brand@2x.png" alt="" />
       <span class="text">粥品香坊（大运村）</span>
       <div class="time">蜂鸟转送/28分钟送达</div>
       <div class="discount">
-        <img src="../assets/imgs/decrease/decrease_1@2x.png"
-             alt="" />
+        <img src="../assets/imgs/decrease/decrease_1@2x.png" alt="" />
         <span class="">在线支付满28减5，满50减10</span>
       </div>
     </div>
