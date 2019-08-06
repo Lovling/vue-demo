@@ -248,7 +248,7 @@ export default {
   }
   .foot{
     width: 100%;
-    height: .92rem;
+    height: 1.16rem;
     background-color: #ccc;
     position: fixed;
     bottom: 0;
